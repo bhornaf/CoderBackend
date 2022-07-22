@@ -1,1 +1,32 @@
-[{"title":"Escuadra","price":123.45,"thumbnail":"https://cdn3.iconfinder.com/data/icons/shopping-cart-solid/64/shopping-cart-solid-01-512.png","id":1},{"title":"Calculadora","price":234.56,"thumbnail":"https://cdn3.iconfinder.com/data/icons/shopping-cart-solid/64/shopping-cart-solid-01-512.png","id":2},{"title":"Globo Terraqueo","price":345.67,"thumbnail":"https://cdn3.iconfinder.com/data/icons/shopping-cart-solid/64/shopping-cart-solid-01-512.png","id":3},{"title":"Laptop","price":1000,"thumbnail":"https://images-na.ssl-images-amazon.com/images/I/61-YZ-X-8L._AC_SL1500_.jpg","id":5}]
+[
+    {
+        "title": "Escuadra",
+        "price": 123.45,
+        "thumbnail": "https://cdn3.iconfinder.com/data/icons/shopping-cart-solid/64/shopping-cart-solid-01-512.png",
+        "id": 1
+    },
+    {
+        "title": "Calculadora",
+        "price": 234.56,
+        "thumbnail": "https://cdn3.iconfinder.com/data/icons/shopping-cart-solid/64/shopping-cart-solid-01-512.png",
+        "id": 2
+    },
+    {
+        "title": "Globo Terraqueo",
+        "price": 345.67,
+        "thumbnail": "https://cdn3.iconfinder.com/data/icons/shopping-cart-solid/64/shopping-cart-solid-01-512.png",
+        "id": 3
+    },
+    {
+        "title": "Laptop",
+        "price": 1000,
+        "thumbnail": "https://images-na.ssl-images-amazon.com/images/I/61-YZ-X-8L._AC_SL1500_.jpg",
+        "id": 5
+    },
+    {
+        "title": "Macbook",
+        "price": "5600",
+        "thumbnails": "https://images-na.ssl-images-amazon.com/images/I/61-YZ-X-8L._AC_SL1500_.jpg",
+        "id": 6
+    }
+]
