@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <%- include('../partials/head.ejs') %>
+    </head>
+    <body>
+        <div class="container">
+            <h1>New Product</h1>
+            <form action="/api/productos" method="POST">
+                <div class="form-group">
+                    <label for="name">Title</label>
+                    <input type="text" class="form-control" id="title" name="title" placeholder="title" />
+                </div>
+                <div class="form-group">
+                    <label for="description">Price</label>
+                    <input type="text" class="form-control" id="price" name="price" placeholder="price" />
+                </div>
+                <div class="form-group">
+                    <label for="price">Thumbnail</label>
+                    <input type="text" class="form-control" id="thumbnail" name="thumbnail" placeholder="thumbnail" />
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="/productos" class="btn btn-info">Product List</a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

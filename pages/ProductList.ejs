@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <%- include('../partials/head.ejs') %>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Product List</h1>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Price</th>
+                        <th>Thumbnail</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% products.forEach(function(product) { %>
+                        <tr>
+                            <td><%= product.title %></td>
+                            <td><%= product.price %></td>
+                            <td>
+                                <img src=<%= product.thumbnail %> alt="">
+                               
+                            </td>
+                            <td>
+                                <a href="/productos/<%= product.id %>" class="btn btn-info">View</a>
+                                <a href="/api/productos/<%= product.id %>" class="btn btn-primary">Edit</a>
+                                <a href="/api/productos/<%= product.id %>/delete" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="/" class="btn btn-info">New product</a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

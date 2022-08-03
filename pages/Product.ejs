@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <%- include('../partials/head.ejs') %>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Product Info</h1>
+
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Price</th>
+                                <th>Thumbnail</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><%= product.title %></td>
+                                <td><%= product.price %></td>
+                                <td>
+                                    <img src=<%= product.thumbnail %> alt="">
+                                </td>
+                            </tr>
+                        </tbody>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="/productos" class="btn btn-info">Back</a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

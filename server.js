@@ -9,22 +9,75 @@ const router = Router();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static("public"));
-
-// router.get("/", (req, res) => {
-//     res.send("Hello World!");
-// });
-
-router.get("/productos", (req, res) => {
+// app.use(express.static("public"));
+app.set("view engine", "ejs");
+app.set("views", "./pages");
+app.get("/", (req, res) => {
+    res.render("index");
+});
+app.get("/productos", (req, res) => {
     productos
         .getAll()
         .then((data) => {
-            res.send(data);
+            res.render("ProductList", { products: data });
         })
         .catch((err) => {
-            res.send(err);
+            console.log(err);
         });
 });
+
+app.get("/productos/:id", (req, res) => {
+    const id = parseInt(req.params.id);
+    productos
+        .getById(id)
+        .then((data) => {
+            res.render("Product", { product: data });
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+});
+
+// // Use pug
+// app.set("views", "./views");
+// app.set("view engine", "pug");
+// app.get("/", (req, res) => {
+//     res.render("index.pug", {});
+// });
+
+// app.get("/productos", (req, res) => {
+//     productos
+//         .getAll()
+//         .then((productos) => {
+//             res.render("productos.pug", { productos: productos });
+//         })
+//         .catch((err) => {
+//             console.log(err);
+//         });
+// });
+
+// app.get("/producto/:id", (req, res) => {
+//     const id = parseInt(req.params.id);
+//     productos
+//         .getById(id)
+//         .then((producto) => {
+//             res.render("producto.pug", { productos: producto });
+//         })
+//         .catch((err) => {
+//             console.log(err);
+//         });
+// });
+
+// router.get("/productos", (req, res) => {
+//     productos
+//         .getAll()
+//         .then((data) => {
+//             res.send(data);
+//         })
+//         .catch((err) => {
+//             res.send(err);
+//         });
+// });
 
 router.get("/producto/:id", (req, res) => {
     console.log(req.params.id);
@@ -33,11 +86,6 @@ router.get("/producto/:id", (req, res) => {
         .getById(id)
         .then((data) => {
             res.send(data ? data : "Producto no encontrado");
-            // if (data) {
-            //     res.send(data);
-            // } else {
-            //     res.send("No existe el producto");
-            // }
         })
         .catch((err) => {
             res.send(err);

@@ -1,0 +1,26 @@
+html(lang="es")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Producto
+        link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
+        script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+        script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
+    body
+        div.container
+            h1 Ingrese Producto
+            form(action="/api/productos", method="post")
+                div.form-group
+                    label(for="nombre") Title
+                    input.form-control(type="text", name="title", id="title", placeholder="title")
+                div.form-group
+                    label(for="precio") Price
+                    input.form-control(type="text", name="price", id="price", placeholder="price")
+                div.form-group
+                    label(for="cantidad") Thumbnail
+                    input.form-control(type="text", name="thumbnail", id="thumbnail", placeholder="thumbnail")
+                div.form-group
+                button.btn.btn-success(type="submit") Send
+        div.container
+            button.btn.btn-primary(type="button", onclick="location.href='/productos'") View List
