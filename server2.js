@@ -35,6 +35,22 @@ app.get("/", (req, res) => {
     res.render("index", {});
 });
 
+const getDateNow = () => {
+    const date = new Date();
+    const [month, day, year] = [
+        date.getMonth(),
+        date.getDate(),
+        date.getFullYear(),
+    ];
+    const [hour, minutes, seconds] = [
+        date.getHours(),
+        date.getMinutes(),
+        date.getSeconds(),
+    ];
+
+    return `${month}/${day}/${year} ${hour}:${minutes}:${seconds}`;
+};
+
 socketServer.on("connection", (socket) => {
     console.log("Nuevo client conectado");
     socketServer.emit(
@@ -48,7 +64,7 @@ socketServer.on("connection", (socket) => {
             ...msg,
             socket_id: socket.id,
             likes: 0,
-            date: Date.now(),
+            date: getDateNow(),
         };
         contenedor_msg.save(_msg);
         socketServer.sockets.emit(events.NEW_MESSAGE, _msg);

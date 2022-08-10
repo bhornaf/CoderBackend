@@ -17,13 +17,10 @@ socket.on("NEW_MESSAGE", (msg) => {
 
 function appendMessage(msg) {
     document.getElementById("messages").innerHTML += `
-    <div class="post ui card">
-      <div class="content">
+    <div class="row">
         <b class="text-primary">${msg.email} </b> 
         <b class="text-secondary">${msg.date}</b>
-        <p class="text-success">${msg.message}</p>
-        <hr/>
-      </div>
+        <b class="text-success">${msg.message}</b>
     </div>
   `;
 }

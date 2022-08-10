@@ -2,9 +2,17 @@
   {
     "email": "bhornaf@upao.edu.pe",
     "message": "Hola",
-    "socket_id": "SxtTRYUqrlGqAtcXAAAB",
+    "socket_id": "9PR3-rA5_vnL3X_7AAAB",
     "likes": 0,
-    "date": 1660100095115,
-    "id": 1
+    "date": "7/9/2022 22:16:24",
+    "id": 7
+  },
+  {
+    "email": "bhornaf@upao.edu.pe",
+    "message": "Como estas?",
+    "socket_id": "9ZkfbsWHHf-wZBi1AAAB",
+    "likes": 0,
+    "date": "7/9/2022 22:16:43",
+    "id": 8
   }
 ]
