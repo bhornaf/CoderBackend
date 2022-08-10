@@ -8,6 +8,14 @@
         <%- include('../partials/head.ejs') %>
     </head>
     <body>
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="/productos" class="btn btn-info">Product List</a>
+                </div>
+            </div>
+        </div>
         <div class="container">
             <h1>New Product</h1>
             <form action="/api/productos" method="POST">
@@ -25,12 +33,20 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
         </div>
-        <div class="container">
+        <div id="center_message" class="container" >
             <div class="row">
-                <div class="col-md-12">
-                    <a href="/productos" class="btn btn-info">Product List</a>
+                <div class="col-md-12" >
+                    <input type="email" placeholder="yout@mail.com" id="email">
                 </div>
+                <div class="col-md-12">
+                </div>
+                <div class="col-md-12">
+                    <input type="post" id="message">
+                    <button id="email" class="btn btn-success" type="" onclick="sendMessages()" >
+                        <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                        Send</button>
             </div>
-        </div>
+        </div> 
+        
     </body>
 </html>

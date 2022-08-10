@@ -1,11 +1,55 @@
 const express = require("express");
 const { Router } = express;
+const { Server: HTTPServer } = require("http");
+const { Server: SocketServer } = require("socket.io");
+const events = require("./socket_events");
 
-const contenedor = require("./Contenedor");
-const productos = new contenedor("productos.txt");
+const messages = [];
 
 const app = express();
 const router = Router();
+
+const contenedor = require("./Contenedor");
+const productos = new contenedor("productos.txt");
+const httpServer = new HTTPServer(app);
+const socketServer = new SocketServer(httpServer);
+
+socketServer.on("connection", (socket) => {
+    console.log("Nuevo client conectado");
+    socketServer.emit(
+        events.UPDATE_MESSAGES,
+        "Bienvenido al WebSocket",
+        messages
+    );
+
+    socket.on(events.POST_MESSAGE, (msg) => {
+        const date = new Date.now();
+        console.log(date);
+        const [month, day, year] = [
+            date.getMonth(),
+            date.getDate(),
+            date.getFullYear(),
+        ];
+        const [hour, minutes, seconds] = [
+            date.getHours(),
+            date.getMinutes(),
+            date.getSeconds(),
+        ];
+
+        const _msg = {
+            ...msg,
+            socket_id: socket.id,
+            likes: 0,
+            date: `${month}/${day}/${year} ${hour}:${minutes}:${seconds}`,
+        };
+
+        console.log(
+            `Holaaaa: ${month}/${day}/${year} ${hour}:${minutes}:${seconds}`
+        );
+        messages.push(_msg);
+        socketServer.sockets.emit(events.NEW_MESSAGE, _msg);
+    });
+});
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
