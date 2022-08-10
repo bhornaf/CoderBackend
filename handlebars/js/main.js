@@ -32,6 +32,31 @@ function sendMessages() {
     socket.emit("POST_MESSAGE", { email, message });
 }
 
-function likeMessage(msgId) {
-    socket.emit("LIKE_MESSAGE", msgId);
+socket.on("UPDATE_LIST", (data, allProducts) => {
+    document.getElementById("productsList").innerHTML = "";
+    allProducts
+        .sort((a, b) => a.id - b.id)
+        .forEach((data) => appendProduct(data));
+});
+
+socket.on("NEW_PRODUCT", (data) => {
+    appendProduct(data);
+});
+
+function appendProduct(data) {
+    document.getElementById("productsList").innerHTML += `
+  <tr>
+    <td>${data.id}</td>
+    <td>${data.title}</td>
+    <td>${data.price}</td>
+    <td> <img src="${data.thumbnail}" alt="${data.title}" /></td>
+  </tr>
+  `;
+}
+
+function sendProduct() {
+    const title = document.getElementById("title").value;
+    const price = document.getElementById("price").value;
+    const thumbnail = document.getElementById("thumbnail").value;
+    socket.emit("POST_PRODUCT", { title, price, thumbnail });
 }

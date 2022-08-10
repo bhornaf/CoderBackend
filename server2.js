@@ -13,6 +13,10 @@ const contenedor_msg = new ContenedorData("./data.json");
 const messages = contenedor_msg.getAll();
 
 const productos = new contenedor("productos.txt");
+// const productos_list = productos.getAll().then((data) => {
+//     data;
+// });
+
 const router = Router();
 
 const app = express();
@@ -53,11 +57,24 @@ const getDateNow = () => {
 
 socketServer.on("connection", (socket) => {
     console.log("Nuevo client conectado");
+
     socketServer.emit(
         events.UPDATE_MESSAGES,
         "Bienvenido al WebSocket",
         messages
     );
+
+    const listProducts = productos.getAll();
+    listProducts
+        .then((data) => {
+            socketServer.emit(events.UPDATE_LIST, "Lista de productos", data);
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+        .finally(() => {
+            console.log("Lista de productos enviada");
+        });
 
     socket.on(events.POST_MESSAGE, (msg) => {
         const _msg = {
@@ -68,6 +85,22 @@ socketServer.on("connection", (socket) => {
         };
         contenedor_msg.save(_msg);
         socketServer.sockets.emit(events.NEW_MESSAGE, _msg);
+    });
+
+    socket.on(events.POST_PRODUCT, (product) => {
+        productos
+            .save(product)
+            .then(() => {
+                socketServer.sockets.emit(events.NEW_PRODUCT, product);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+            .finally(() => {
+                console.log("Producto agregado");
+            });
+
+        // socketServer.sockets.emit(events.NEW_PRODUCT, product);
     });
 });
 

@@ -15,7 +15,7 @@
     <body>
         <div class="container">
             <h1>New Product</h1>
-            <form action="/api/productos" method="POST">
+            <div>
                 <div class="form-group">
                     <label for="title">Title</label>
                     <input
@@ -43,10 +43,33 @@
                         name="thumbnail"
                     />
                 </div>
-                <button type="submit" class="btn btn-success">Submit</button>
-            </form>
-            <a href="/productos" class="btn btn-primary">View List Products</a>
+                <button
+                    type="submit"
+                    class="btn btn-success"
+                    onclick="sendProduct()"
+                >Submit</button>
+            </div>
+            <a class="btn btn-primary">View List Products</a>
 
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Product List</h1>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Title</th>
+                                <th>Price</th>
+                                <th>Thumbnail</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productsList">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
         <div class="container">
             <div class="row">
