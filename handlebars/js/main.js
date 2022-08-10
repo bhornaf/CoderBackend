@@ -19,7 +19,9 @@ function appendMessage(msg) {
     document.getElementById("messages").innerHTML += `
     <div class="post ui card">
       <div class="content">
-        <b>${msg.email} (${msg.date}):</b> ${msg.message}
+        <b class="text-primary">${msg.email} </b> 
+        <b class="text-secondary">${msg.date}</b>
+        <p class="text-success">${msg.message}</p>
         <hr/>
       </div>
     </div>
